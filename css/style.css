@@ -192,8 +192,16 @@
 
 /* tamaños de texto */
 .texto-grande {
-    font-size: 80px;
+    font-size: 18vw;
 }
+
+@media only screen and (min-width: 768px) {
+    .texto-grande {
+        font-size: 80px;
+    }
+}
+
+
 
 .texto-mediano {
     font-size: 50px;
@@ -318,6 +326,38 @@
     /* background-position: center; */
     /* background-repeat: no-repeat; */
 }
+
+.categoria-img {
+    width: 100%;
+    max-height: 200px; /* ajusta este valor según tu preferencia */
+}
+
+.random-img {
+    max-height: 352px;
+    max-width: 624px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .random-img {
+        height: 352px;
+        width: 624px;
+    }
+  }
+
+
+.formulario-img {
+    display: none; 
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .formulario-img {
+      display: block;
+    }
+  }
+  
+
+
 
 /* MEDIA QUERIES */
 /* Mobile */

@@ -16,7 +16,7 @@
   <header class="bg-naranjo-op">
     <nav class="navbar navbar-expand-lg navbar-light bg-naranjo-op">
       <div class="container text-light pt-2">
-        <a class="navbar-brand tx-azul" href="#">
+        <a class="navbar-brand tx-azul" href="index.html">
           <div class="titulorecetas">
             <p class="titulo-receta display-6">Recetas</p>
             <p class="titulo-mundo">Del mundo</p>
@@ -30,59 +30,65 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Acerca
                 de</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
-                id="navbarDropdownPaises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Paises
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownPaises">
-                <li><a class="dropdown-item" href="#">México</a></li>
-                <li><a class="dropdown-item" href="#">Italia</a></li>
-                <li><a class="dropdown-item" href="#">Japón</a></li>
-                <li><a class="dropdown-item" href="#">India</a></li>
-                <li><a class="dropdown-item" href="#">Francia</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
-                id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categorías
-              </a>
-              <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdownCategorias">
-                <li><a class="dropdown-item" href="#">Pasteles</a></li>
-                <li><a class="dropdown-item" href="#">Helados</a></li>
-                <li><a class="dropdown-item" href="#">Tartas</a></li>
-                <li><a class="dropdown-item" href="#">Galletas</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Receta
-                random</a></li>
-            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Añadir
-                receta</a></li>
-            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Login <i
+                <li class="nav-item dropdown z-index-d">
+                  <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
+                    id="navbarDropdownPaises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Paises
+                  </a>
+                  <ul class="dropdown-menu" id="navbarDropdownPaisesMenu" aria-labelledby="navbarDropdownPaises">
+                    <!-- Los países se cargarán aquí dinámicamente -->
+                  </ul>
+                </li>
+                <li class="nav-item dropdown z-index-d">
+                  <a class="nav-link dropdown-toggle links text-decoration-none text-light z-index-d" href="#"
+                    id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorías
+                  </a>
+                  <ul class="dropdown-menu z-index-d" id="navbarDropdownCategoriasMenu"
+                    aria-labelledby="navbarDropdownCategorias">
+                    <!-- Las categorías se cargarán aquí dinámicamente -->
+                  </ul>
+                </li>
+            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#" id="recetaRandomLink">Receta random</a></li>
+            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="login.html">Acceder <i
                   class="fa fa-solid fa-user"></i></a></li>
             <li class="nav-item btn btn-danger ms-2"><a class="nav-link text-light text-decoration-none"
-                href="#">Registrarse</a></li>
+                href="register.html">Registrarse</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
+  <div class="modal fade" id="recetaAleatoriaModal" tabindex="-1" aria-labelledby="recetaAleatoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recetaAleatoriaModalLabel">Receta Aleatoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="recetaAleatoriaModalBody">
+                <!-- Contenido de la receta aleatoria se cargará aquí -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
   <div class="text-center bg-crema texto-mediano">
     <br>
     <div class="tx-cafe texto-grande">
-      <img src="img/Recurso 40-8.png" class="me-4 mb-3" width="50" height="50">
       Registrarse
-      <img src="img/Recurso 40-8.png" class="ms-4 mb-3" width="50" height="50">
     </div>
     <br>
   </div>
 
   <div class="container-fluid">
     <div class="row">
-      <img src="img/banner.jpg" class="col-6">
-      <div class="col-6 text-center">
+      <img src="img/banner.jpg" class="col-6 formulario-img">
+      <div class="col-md-6 text-center">
         <br>
         <span class="texto-grande">Bienvenid@</span>
         <br>
@@ -90,7 +96,7 @@
         <br>
         <br>
         <br>
-        <div class="col-6  container-fluid">
+        <div class="col-md-6  container-fluid">
           <div class="input-group input-group-lg rounded-0">
             <span class="input-group-text rounded-0 bg-naranjo" id="Usuario"></span>
             <input type="text" class="form-control bg-crema tx-gris rounded-0" placeholder="Usuario"
@@ -121,49 +127,50 @@
   <!-- RECETA DEL DIA -->
   <div class="receta-del-dia my-3">
     <div class="container py-3">
-      <div class="row align-items-center py-3">
-        <div class="col-md-6">
-          <p class="display-7 tx-cafe">receta del dia</p>
-          <p class="receta-random tx-cafe">receta random</p>
-          <p class="">Lorem ipsum dolor sit amet, consectetuer adipiscing
-            elit, sed Lorem ipsum dolor sit amet, consectetuer
-            adipiscing elit, sed diam nonummy nibh euismod</p>
-          <button class="btn btn-danger">
-            <a class="text-light text-decoration-none" href="#">Ver Receta</a>
-          </button>
+        <div class="row align-items-center py-3" id="recetaDelDia">
+            <div class="col-md-6">
+                <p class="display-7 tx-cafe">receta del día</p>
+                <p class="receta-random tx-cafe" id="recetaDelDiaNombre">Receta random</p>
+                <p id="recetaDelDiaDescripcion">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://placehold.co/624x352" alt="" id="recetaDelDiaImg">
+            </div>
         </div>
-        <div class="col-md-6 text-center">
-          <img src="https://placehold.co/624x352" alt="">
+    </div>
+</div>
+
+
+
+
+
+  </div>
+  </div>
+
+
+  <footer class="bg-naranjo text-light">
+    <!-- place footer here -->
+    <div class="container pt-2 text-center ">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="titulorecetas">
+                    <p class="titulo-receta display-6">Recetas</p>
+                    <p class="titulo-mundo">Del mundo</p>
+                </div>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <p id="anno">{año}, Recetas del mundo - un sitio donde podr ás encontrar la receta perfecta para esa ocasión.
+                </p>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-
-
-
-
-
-  </div>
-  </div>
-
-
-  <footer class="navbar bg-naranjo">
-    <div class="container-fluid me-3">
-      <a class="navbar-brand ms-5" style="position: relative;">
-        <img src="img/Recurso 53-8.png" style="max-width: 70%;">
-      </a>
-      <span class="navbar-text mx-auto tx-blanco" style="font-size: 20px;">© {{año}}, Recetas del mundo - Un sitio donde
-        podrás encontrar la receta perfecta para esa ocasión.</span>
-      <div class="nav-item">
-        <a class="nav-link fs-4 tx-blanco">Acerca de</a>
-      </div>
-    </div>
-  </footer>
+</footer>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="js/script.js"></script>
 
 </body>
 

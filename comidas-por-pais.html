@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comida Por Categoria</title>
+  <title>Comida Por Pais</title>
   <link rel="icon" href="img/user-cheems.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
@@ -15,268 +15,120 @@
 <body>
   <header class="bg-naranjo-op">
     <nav class="navbar navbar-expand-lg navbar-light bg-naranjo-op">
-        <div class="container text-light pt-2">
-            <a class="navbar-brand tx-azul" href="#">
-                <div class="titulorecetas">
-                    <p class="titulo-receta display-6">Recetas</p>
-                    <p class="titulo-mundo">Del mundo</p>
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Acerca
-                            de</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
-                            id="navbarDropdownPaises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Paises
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPaises">
-                            <li><a class="dropdown-item" href="#">México</a></li>
-                            <li><a class="dropdown-item" href="#">Italia</a></li>
-                            <li><a class="dropdown-item" href="#">Japón</a></li>
-                            <li><a class="dropdown-item" href="#">India</a></li>
-                            <li><a class="dropdown-item" href="#">Francia</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
-                            id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Categorías
-                        </a>
-                        <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdownCategorias">
-                            <li><a class="dropdown-item" href="#">Pasteles</a></li>
-                            <li><a class="dropdown-item" href="#">Helados</a></li>
-                            <li><a class="dropdown-item" href="#">Tartas</a></li>
-                            <li><a class="dropdown-item" href="#">Galletas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Receta
-                            random</a></li>
-                    <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Añadir
-                            receta</a></li>
-                    <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Login <i
-                                class="fa fa-solid fa-user"></i></a></li>
-                    <li class="nav-item btn btn-danger ms-2"><a class="nav-link text-light text-decoration-none"
-                            href="#">Registrarse</a></li>
-                </ul>
-            </div>
+      <div class="container text-light pt-2">
+        <a class="navbar-brand tx-azul" href="index.html">
+          <div class="titulorecetas">
+            <p class="titulo-receta display-6">Recetas</p>
+            <p class="titulo-mundo">Del mundo</p>
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#">Acerca
+                de</a></li>
+            <li class="nav-item dropdown z-index-d">
+              <a class="nav-link dropdown-toggle links text-decoration-none text-light" href="#"
+                id="navbarDropdownPaises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Paises
+              </a>
+              <ul class="dropdown-menu" id="navbarDropdownPaisesMenu" aria-labelledby="navbarDropdownPaises">
+                <!-- Los países se cargarán aquí dinámicamente -->
+              </ul>
+            </li>
+            <li class="nav-item dropdown z-index-d">
+              <a class="nav-link dropdown-toggle links text-decoration-none text-light z-index-d" href="#"
+                id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorías
+              </a>
+              <ul class="dropdown-menu z-index-d" id="navbarDropdownCategoriasMenu"
+                aria-labelledby="navbarDropdownCategorias">
+                <!-- Las categorías se cargarán aquí dinámicamente -->
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="#" id="recetaRandomLink">Receta random</a></li>
+            <li class="nav-item"><a class="nav-link links text-decoration-none text-light" href="login.html">Acceder <i
+                  class="fa fa-solid fa-user"></i></a></li>
+            <li class="nav-item btn btn-danger ms-2"><a class="nav-link text-light text-decoration-none"
+                href="register.html">Registrarse</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
-</header>
+  </header>
 
-<div class="hero-categorias bg-crema py-3 pt-3 espaciado-titulo">
-  <div class="container">
-    <div class="row text-center">
-      <p class="display-2 tx-cafe fw-500">{{categorias}}</p>
+  <div class="modal fade" id="recetaAleatoriaModal" tabindex="-1" aria-labelledby="recetaAleatoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recetaAleatoriaModalLabel">Receta Aleatoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="recetaAleatoriaModalBody">
+                <!-- Contenido de la receta aleatoria se cargará aquí -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<!-- cards -->
-
-<div class="container py-3 my-3">
-  <div class="row">
-
-    <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
-        <img src="https://placehold.co/500" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{nombreComida}}</h5>
-          <p class="card-text">{{descripcionComida}}</p>
-          <a href="#" class="btn btn-primary" type="button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{modalReceta}}</a>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">{{nombreComida}}</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <img class="w-100" src="https://placehold.co/500" alt="">
-              <br>
-              {{detallesReceta}}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-warning" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
+  <div class="hero-categorias bg-crema py-3 pt-3 espaciado-titulo">
+    <div class="container">
+      <div class="row text-center">
+        <p class="display-2 tx-cafe fw-500" id="nombrePais">{{Pais}}</p>
       </div>
     </div>
-
-
-    <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
-        <img src="https://placehold.co/500" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{nombreComida}}</h5>
-          <p class="card-text">{{descripcionComida}}</p>
-          <a href="#" class="btn btn-primary" type="button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{modalReceta}}</a>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">{{nombreComida}}</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <img class="w-100" src="https://placehold.co/500" alt="">
-              <br>
-              {{detallesReceta}}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-warning" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
-        <img src="https://placehold.co/500" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{nombreComida}}</h5>
-          <p class="card-text">{{descripcionComida}}</p>
-          <a href="#" class="btn btn-primary" type="button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{modalReceta}}</a>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">{{nombreComida}}</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <img class="w-100" src="https://placehold.co/500" alt="">
-              <br>
-              {{detallesReceta}}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-warning" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
-        <img src="https://placehold.co/500" class="card-img-top img-thumbnail" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{nombreComida}}</h5>
-          <p class="card-text">{{descripcionComida}}</p>
-          <a href="#" class="btn btn-primary" type="button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">{{modalReceta}}</a>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">{{nombreComida}}</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <img class="w-100" src="https://placehold.co/500" alt="">
-              <br>
-              {{detallesReceta}}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-warning" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
   </div>
-</div>
+
+  <!-- cards -->
+
+  <div class="container py-3 my-3 ">
+    <div class="row" id="recetas">
+
+    </div>
+  </div>
 
 
-    <br>
+  <br>
 
-    <div class="categorias">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
+  <div class="categorias">
+    <div class="container">
+      <div class="row" id="paises">
+
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <footer class="bg-naranjo text-light">
+    <!-- place footer here -->
+    <div class="container pt-2 text-center ">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="titulorecetas">
+            <p class="titulo-receta display-6">Recetas</p>
+            <p class="titulo-mundo">Del mundo</p>
           </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
-          <div class="col-md-3">
-            <img class="py-2" src="https://placehold.co/300x160" alt="">
-          </div>
+        </div>
+        <div class="col-md-10 align-self-center">
+          <p id="anno">{año}, Recetas del mundo - un sitio donde podr ás encontrar la receta perfecta para esa ocasión.
+          </p>
         </div>
       </div>
     </div>
-
-    <br>
-
-    <footer class="bg-naranjo text-light">
-      <!-- place footer here -->
-      <div class="container pt-2 text-center ">
-          <div class="row">
-              <div class="col-md-2">
-                  <div class="titulorecetas">
-                      <p class="titulo-receta display-6">Recetas</p>
-                      <p class="titulo-mundo">Del mundo</p>
-                  </div>
-              </div>
-              <div class="col-md-10 align-self-center">
-                  <p>{año}, Recetas del mundo - un sitio donde podr ás encontrar la receta perfecta para esa ocasión.
-                  </p>
-              </div>
-          </div>
-      </div>
   </footer>
 
   </div>
 
-
+  <script src="js/paises.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
