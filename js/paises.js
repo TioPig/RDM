@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         const paisBtn = document.createElement("button");
                         paisBtn.classList.add("btn", "w-100", "mt-2", "bg-naranjo", "tx-blanco");
-                        paisBtn.textContent = `Ver recetas de ${pais.nombre}`;
+                        paisBtn.textContent = `${pais.nombre}`;
                         paisBtn.addEventListener("click", function() {
                             cargarRecetas(pais.nombre);
                             nombrePais.textContent = pais.nombre; // Actualizar el título con el nombre del país
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         const recetaElement = document.createElement("div");
                         recetaElement.classList.add("col-md-3");
                         recetaElement.innerHTML = `
-                            <div class="card mb-4" style="width: 18rem;">
+                            <div class="card mb-4">
                                 <img src="${receta.url_imagen}" class="card-img-top img-thumbnail" alt="${receta.nombre}">
                                 <div class="card-body">
                                     <h5 class="card-title">${receta.nombre}</h5>

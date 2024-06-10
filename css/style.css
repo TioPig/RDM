@@ -389,3 +389,18 @@
 
 /* MEDIA QUERIES */
 /* Mobile */
+
+.display-responsive {
+    display: inline;
+    border-top: none;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .display-responsive {
+      display: none;
+    }
+  }
+
+.btn-index{
+    width: 300px ;
+}

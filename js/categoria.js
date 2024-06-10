@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         const categoriaBtn = document.createElement("button");
                         categoriaBtn.classList.add("btn", "w-100", "mt-2", "bg-naranjo", "tx-blanco");
-                        categoriaBtn.textContent = `Ir a ${categoria.nombre}`;
+                        categoriaBtn.textContent = `${categoria.nombre}`;
                         categoriaBtn.addEventListener("click", function() {
                             cargarRecetas(categoria.nombre);
                             nombreCategoria.textContent = categoria.nombre; // Actualizar el título con el nombre de la categoría
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         const recetaElement = document.createElement("div");
                         recetaElement.classList.add("col-md-3");
                         recetaElement.innerHTML = `
-                            <div class="card mb-4" style="width: 18rem;">
+                            <div class="card mb-4">
                                 <img src="${receta.url_imagen}" class="card-img-top img-thumbnail" alt="${receta.nombre}">
                                 <div class="card-body">
                                     <h5 class="card-title">${receta.nombre}</h5>

@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         const paisBtn = document.createElement("button");
                         paisBtn.classList.add("btn", "w-100", "mt-2", "bg-naranjo", "tx-blanco");
-                        paisBtn.textContent = `Ver recetas de ${pais.nombre}`;
+                        paisBtn.textContent = `${pais.nombre}`;
                         paisBtn.addEventListener("click", function() {
                             // Redirigir a la página específica del país
                             window.location.href = `comidas-por-pais.html?pais=${encodeURIComponent(pais.nombre)}`;
