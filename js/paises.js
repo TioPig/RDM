@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const paisesDiv = document.getElementById("paises");
     const recetasDiv = document.getElementById("recetas");
     const nombrePais = document.getElementById("nombrePais"); // Seleccionar el elemento del título
-    const paisPredeterminado = "American"; // País predeterminado en caso de no recibir parámetros
+    const paisPredeterminado = "Americano"; // País predeterminado en caso de no recibir parámetros
 
     // Función para cargar países
     function cargarPaises() {

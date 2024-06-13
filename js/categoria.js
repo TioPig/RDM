@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const categoriasDiv = document.getElementById("categorias");
     const recetasDiv = document.getElementById("recetas");
     const nombreCategoria = document.getElementById("nombreCategoria"); // Seleccionar el elemento del título
-    const categoriaPredeterminada = "Dessert"; // Categoría predeterminada en caso de no recibir parámetros
+    const categoriaPredeterminada = "Desayuno"; // Categoría predeterminada en caso de no recibir parámetros
 
     // Función para cargar categorías
     function cargarCategorias() {

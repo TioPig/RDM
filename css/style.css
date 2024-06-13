@@ -347,15 +347,15 @@
 
 
 .random-img {
-    max-height: 352px;
-    max-width: 624px;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 
 @media only screen and (min-width: 768px) {
     .random-img {
-        height: 352px;
-        width: 624px;
+        height: 100%;
+        width: 100%;
     }
   }
 
@@ -387,9 +387,6 @@
     margin-right: 0px;
  } 
 
-/* MEDIA QUERIES */
-/* Mobile */
-
 .display-responsive {
     display: inline;
     border-top: none;
@@ -404,3 +401,8 @@
 .btn-index{
     width: 300px ;
 }
+
+.text-justificado {
+    text-align: justify !important;
+}
+
