@@ -63,16 +63,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 return response.json();
             })
             .then(data => {
-                if (data.ok && Array.isArray(data.data)) {
-                    data.data.forEach((receta, index) => {
+                if (data.ok) {
+                    if (Array.isArray(data.data) && data.data.length > 0) {
+                        data.data.forEach((receta, index) => {
                         const modalId = `modal${index}`;
                         const recetaElement = document.createElement("div");
                         recetaElement.classList.add("col-md-3");
                         recetaElement.innerHTML = `
                             <div class="card mb-4">
-                                <img src="${receta.url_imagen}" class="card-img-top img-thumbnail" alt="${receta.nombre}">
+                                <img src="${receta.url_imagen}" class="card-img-top img-thumbnail receta-img" alt="${receta.nombre}">
                                 <div class="card-body">
-                                    <h5 class="card-title">${receta.nombre}</h5>
+                                    <h5 class="card-title titulo-card">${receta.nombre}</h5>
                                     <p class="card-text">País: ${receta.nombre_pais}
                                     <br> Categoria: ${receta.nombre_cat}</p>
                                     <button class="btn bg-naranjo tx-blanco" type="button" data-bs-toggle="modal" data-bs-target="#${modalId}">Ver receta</button>
@@ -103,8 +104,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                     nombrePais.textContent = pais ? pais : "Todos los Países"; // Actualizar el título con el nombre del país o "Todos los Países" si no se proporciona país
                 } else {
-                    recetasDiv.innerHTML = `<p>No hay recetas disponibles para este país.</p>`;
+                    recetasDiv.innerHTML = `<p class="texto-mediano tx-cafe">No hay recetas disponibles para este país.</p>`;
                 }
+            } else {
+                recetasDiv.innerHTML = `<p>Error en la respuesta de la API.</p>`;
+            }
             })
             .catch(error => {
                 recetasDiv.innerHTML = `<p>Error al cargar las recetas: ${error.message}</p>`;

@@ -56,23 +56,24 @@ document.addEventListener("DOMContentLoaded", function() {
         recetasDiv.innerHTML = '';
         
         fetch(recetasUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.ok && Array.isArray(data.data)) {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.ok) {
+                if (Array.isArray(data.data) && data.data.length > 0) {
                     data.data.forEach((receta, index) => {
                         const modalId = `modal${index}`;
                         const recetaElement = document.createElement("div");
                         recetaElement.classList.add("col-md-3");
                         recetaElement.innerHTML = `
                             <div class="card mb-4">
-                                <img src="${receta.url_imagen}" class="card-img-top img-thumbnail" alt="${receta.nombre}">
+                                <img src="${receta.url_imagen}" class="card-img-top img-thumbnail receta-img" alt="${receta.nombre}">
                                 <div class="card-body">
-                                    <h5 class="card-title">${receta.nombre}</h5>
+                                    <h5 class="card-title titulo-card">${receta.nombre}</h5>
                                     <p class="card-text">Categoria: ${receta.nombre_cat}
                                     <br> País: ${receta.nombre_pais}
                                     </p>
@@ -104,13 +105,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                     nombreCategoria.textContent = categoria ? categoria : "Todas las Recetas"; // Actualizar el título con el nombre de la categoría o "Todas las Recetas" si no se proporciona categoría
                 } else {
-                    recetasDiv.innerHTML = `<p>No hay recetas disponibles para esta categoría.</p>`;
+                    recetasDiv.innerHTML = `<p class="texto-mediano tx-cafe">No hay recetas disponibles para esta categoría.</p>`;
                 }
-            })
-            .catch(error => {
-                recetasDiv.innerHTML = `<p>Error al cargar las recetas: ${error.message}</p>`;
-            });
-    }
+            } else {
+                recetasDiv.innerHTML = `<p>Error en la respuesta de la API.</p>`;
+            }
+        })
+        .catch(error => {
+            recetasDiv.innerHTML = `<p>Error al cargar las recetas: ${error.message}</p>`;
+        });
+}
 
     // Leer el parámetro de la consulta "categoria" de la URL
     const params = new URLSearchParams(window.location.search);
