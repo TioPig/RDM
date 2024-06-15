@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         paisBtn.textContent = `${pais.nombre}`;
                         paisBtn.addEventListener("click", function() {
                             cargarRecetas(pais.nombre);
-                            nombrePais.textContent = pais.nombre; // Actualizar el título con el nombre del país
                             window.scrollTo({ top: 0, behavior: 'smooth' }); // Desplazar hacia arriba
                         });
                         paisDiv.appendChild(paisBtn);
@@ -51,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para cargar recetas
     function cargarRecetas(pais) {
         const recetasUrl = recetasUrlBase + (pais ? pais : ""); // Si no se proporciona país, se cargan todas las recetas
-
+        if (pais != "") {
+            nombrePais.textContent = pais; // Actualizar el título con el nombre del país
+            }
         // Limpiar recetas anteriores
         recetasDiv.innerHTML = '';
 

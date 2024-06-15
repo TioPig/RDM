@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         categoriaBtn.textContent = `${categoria.nombre}`;
                         categoriaBtn.addEventListener("click", function() {
                             cargarRecetas(categoria.nombre);
-                            nombreCategoria.textContent = categoria.nombre; // Actualizar el título con el nombre de la categoría
                             window.scrollTo({ top: 0, behavior: 'smooth' }); // Desplazar hacia arriba
                         });
                         categoriaDiv.appendChild(categoriaBtn);
@@ -51,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para cargar recetas
     function cargarRecetas(categoria) {
         const recetasUrl = recetasUrlBase + (categoria ? "categoria/" + categoria : ""); // Si no se proporciona categoría, se cargan todas las recetas
-
+        if (categoria != "") {
+            nombreCategoria.textContent = categoria; // Actualizar el título con el nombre de la categoría
+            }
         // Limpiar recetas anteriores
         recetasDiv.innerHTML = '';
         

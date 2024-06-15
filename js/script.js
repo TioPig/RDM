@@ -295,12 +295,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Inicializar la receta del día al acceder a la página
       inicializarRecetaDelDia();
-  
-      // Cargar una receta aleatoria al hacer clic en "Receta random"
-      recetaRandomLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        cargarRecetaAleatoria();
-      });
     }
   });
   
