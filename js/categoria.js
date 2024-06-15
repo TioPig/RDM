@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <p class="card-text">Categoria: ${receta.nombre_cat}
                                     <br> País: ${receta.nombre_pais}
                                     </p>
-                                    <button class="btn bg-naranjo tx-blanco" type="button" data-bs-toggle="modal" data-bs-target="#${modalId}">Ver receta</button>
+                                    <button class="btn bg-naranjo tx-blanco" style="width: 100%;" type="button" data-bs-toggle="modal" data-bs-target="#${modalId}">Ver receta</button>
                                 </div>
                             </div>
 
