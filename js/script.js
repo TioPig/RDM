@@ -96,10 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Cargar Paises en el Index */
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname === "../index.html") {
+  if (
+    (window.location.pathname === "../index.html",
+    "../index.html")
+  )  {
     const paisesUrl = "https://apirecetas.iacst.space/pais/";
     const paisesDiv = document.getElementById("pais");
-    function cargarPaises() {
+    async function cargarPaises() {
       fetch(paisesUrl)
         .then((response) => {
           if (!response.ok) {
