@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const categoriasDiv = document.getElementById("categorias");
     const recetasDiv = document.getElementById("recetas");
     const nombreCategoria = document.getElementById("nombreCategoria"); // Seleccionar el elemento del título
-    const categoriaPredeterminada = "Desayuno"; // Categoría predeterminada en caso de no recibir parámetros
+    let categoriaPredeterminada = "Desayuno"; // Valor predeterminado inicial
 
     // Función para cargar categorías
     function cargarCategorias() {
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const recetasUrl = recetasUrlBase + (categoria ? "categoria/" + categoria : ""); // Si no se proporciona categoría, se cargan todas las recetas
         if (categoria != "") {
             nombreCategoria.textContent = categoria; // Actualizar el título con el nombre de la categoría
-            }
+        }
         // Limpiar recetas anteriores
         recetasDiv.innerHTML = '';
         
@@ -115,15 +115,39 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             recetasDiv.innerHTML = `<p>Error al cargar las recetas: ${error.message}</p>`;
         });
-}
+    }
+
+    // Función para obtener la categoría predeterminada desde la API
+    function obtenerCategoriaPredeterminada() {
+        return fetch(categoriasUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (Array.isArray(data.data) && data.data.length > 0) {
+                    return data.data[0].nombre; // Devuelve el nombre de la primera categoría
+                } else {
+                    throw new Error("No se encontraron categorías en la API");
+                }
+            })
+            .catch(error => {
+                console.error(`Error al obtener la categoría predeterminada: ${error.message}`);
+                return categoriaPredeterminada; // Si hay un error, usar el valor inicial predeterminado
+            });
+    }
 
     // Leer el parámetro de la consulta "categoria" de la URL
     const params = new URLSearchParams(window.location.search);
     const categoria = params.get('categoria');
 
-    // Cargar las recetas de la categoría si se proporciona un parámetro "categoria" en la URL, de lo contrario, cargar la categoría predeterminada
-    cargarRecetas(categoria ? categoria : categoriaPredeterminada);
-    cargarCategorias()
+    // Obtener la categoría predeterminada desde la API y luego cargar las recetas
+    obtenerCategoriaPredeterminada().then(predeterminada => {
+        cargarRecetas(categoria ? categoria : predeterminada);
+    });
 
-    // Actualizar el año en el texto
+    cargarCategorias();
+
 });

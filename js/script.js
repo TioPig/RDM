@@ -96,13 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Cargar Paises en el Index */
 document.addEventListener("DOMContentLoaded", function () {
-  if (
-    (window.location.pathname === "../index.html",
-    "../index.html")
-  )  {
+  if (window.location.pathname === "/index.html") { 
     const paisesUrl = "https://apirecetas.iacst.space/pais/";
     const paisesDiv = document.getElementById("pais");
-    async function cargarPaises() {
+    function cargarPaises() {
       fetch(paisesUrl)
         .then((response) => {
           if (!response.ok) {
@@ -221,11 +218,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (
-      (window.location.pathname === "../index.html",
-      "../login.html",
-      "../register.html")
-    )  {
+    const paths = ["/index.html", "/login.html", "/register.html"];
+    // El siguiente if no funciona en local, tendrian que poenr el directorio en su totalidad
+    // Ej: /C:/Users/*USUARIO*/Documents/GitHub/RDM/login.html
+    if (paths.includes(window.location.pathname)) {
       const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
       const recetaRandomLink = document.getElementById("recetaRandomLink");
       const recetaDelDiaNombre = document.getElementById("recetaDelDiaNombre");

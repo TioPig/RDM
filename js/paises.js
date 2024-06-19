@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const paisesDiv = document.getElementById("paises");
     const recetasDiv = document.getElementById("recetas");
     const nombrePais = document.getElementById("nombrePais"); // Seleccionar el elemento del título
-    const paisPredeterminado = "Americano"; // País predeterminado en caso de no recibir parámetros
+    let paisPredeterminado = "Chile"; // País predeterminado en caso de no recibir parámetros
 
     // Función para cargar países
     function cargarPaises() {
@@ -116,12 +116,38 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
+        // Función para obtener la categoría predeterminada desde la API
+        function obtenerPaisPredeterminado() {
+            return fetch(paisesUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (Array.isArray(data.data) && data.data.length > 0) {
+                        return data.data[0].nombre; // Devuelve el nombre de la primera categoría
+                    } else {
+                        throw new Error("No se encontraron categorías en la API");
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al obtener la categoría predeterminada: ${error.message}`);
+                    return paisPredeterminado; // Si hay un error, usar el valor inicial predeterminado
+                });
+        }
+    
+
     // Leer el parámetro de la consulta "pais" de la URL
     const params = new URLSearchParams(window.location.search);
     const pais = params.get('pais');
 
     // Cargar los países y las recetas del país si se proporciona un parámetro "pais" en la URL, de lo contrario, cargar el país predeterminado
+    obtenerPaisPredeterminado().then(predeterminada => {
+        cargarRecetas(pais ? pais : predeterminada);
+    });
     cargarPaises();
-    cargarRecetas(pais ? pais : paisPredeterminado);
+    
 
 });
