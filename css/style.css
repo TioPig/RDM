@@ -425,3 +425,25 @@
         height: 300px;
     }
   }
+
+.pais-img {
+    width: 100% !important;
+    max-height: auto !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .pais-img {
+        width: 100% !important;
+        height: 155px !important;
+    }
+  }
+
+.z-index-d {
+    z-index: 1 !important;
+    position: relative;
+}
+
+.z-index-b {
+    z-index: 0 !important;
+    position: relative;
+}

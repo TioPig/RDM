@@ -96,7 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Cargar Paises en el Index */
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname === "/index.html") { 
+  // El siguiente if no funciona en local, tendrian que poner el directorio en su totalidad
+  // Ej: /C:/Users/*USUARIO*/Documents/GitHub/RDM/login.html
+  if (window.location.pathname === "/index.html") {
     const paisesUrl = "https://apirecetas.iacst.space/pais/";
     const paisesDiv = document.getElementById("pais");
     function cargarPaises() {
@@ -117,8 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
               paisImg.classList.add(
                 "img-fluid",
                 "img-thumbnail",
-                "pais-img",
-                "categoria-img"
+                "pais-img"
               );
               paisImg.src = pais.url_imagen;
               paisImg.alt = pais.nombre;
@@ -218,9 +219,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const paths = ["/index.html", "/login.html", "/register.html"];
-    // El siguiente if no funciona en local, tendrian que poenr el directorio en su totalidad
+    // El siguiente if no funciona en local, tendrian que poner el directorio en su totalidad
     // Ej: /C:/Users/*USUARIO*/Documents/GitHub/RDM/login.html
+    const paths = ["/index.html", "/login.html", "/register.html"];
     if (paths.includes(window.location.pathname)) {
       const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
       const recetaRandomLink = document.getElementById("recetaRandomLink");

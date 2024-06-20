@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         paisDiv.classList.add("col-md-3", "mb-4");
 
                         const paisImg = document.createElement("img");
-                        paisImg.classList.add("img-fluid", "img-thumbnail", "pais-img", "categoria-img");
+                        paisImg.classList.add("img-fluid", "img-thumbnail", "pais-img");
                         paisImg.src = pais.url_imagen;
                         paisImg.alt = pais.nombre;
                         paisDiv.appendChild(paisImg);
