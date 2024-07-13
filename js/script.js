@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (paths.includes(window.location.href)) {
     const paisesUrl = "https://apirecetas.iacst.space/pais/";
     const paisesDiv = document.getElementById("pais");
-    function cargarPaises() {
-      fetch(paisesUrl)
+    async function cargarPaises() {
+      await fetch(paisesUrl)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -156,6 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
+// Receta Aleatoria
 document.addEventListener("DOMContentLoaded", function () {
   const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
   const recetaRandomLink = document.getElementById("recetaRandomLink");
@@ -170,8 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   // Función para cargar todas las recetas y seleccionar una aleatoria
-  function cargarRecetaAleatoria() {
-    fetch(recetasUrl)
+  async function cargarRecetaAleatoria() {
+    await fetch(recetasUrl)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -217,6 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+// Receta del dia
 document.addEventListener("DOMContentLoaded", function () {
     const paths = ["https://recetasdelmundo.uno/index.html", "https://recetasdelmundo.uno/login.html", "https://recetasdelmundo.uno/register.html", "https://recetasdelmundo.uno/"];
     if (paths.includes(window.location.href)) {
@@ -234,8 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
   
-      function cargarRecetaAleatoria() {
-        fetch(recetasUrl)
+      async function cargarRecetaAleatoria() {
+        await fetch(recetasUrl)
           .then((response) => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -294,4 +298,98 @@ document.addEventListener("DOMContentLoaded", function () {
       inicializarRecetaDelDia();
     }
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    
+    
+
+    window.updateNavbar = function() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const loginLink = document.getElementById("loginLink");
+      const registerLink = document.getElementById("registerLink");
+      const userAvatar = document.getElementById("userAvatar");
+      
+      if (loginLink && registerLink && userAvatar) {
+        if (isLoggedIn) {
+          loginLink.classList.add("visually-hidden");
+          registerLink.classList.add("visually-hidden");
+          userAvatar.classList.remove("visually-hidden");
+        } else {
+          loginLink.classList.remove("visually-hidden");
+          registerLink.classList.remove("visually-hidden");
+          userAvatar.classList.add("visually-hidden");
+        }
+      }
+    }
+    
+    function getUserInfo() {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwt_decode(token);
+        localStorage.setItem("userInfo", JSON.stringify(decodedToken.usuario));
+        return decodedToken;
+      }
+      return null;
+    }
+  
+
+    updateNavbar();
+    getUserInfo();
+
+    const logoutLink = document.getElementById("logoutLink");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("token");
+      localStorage.setItem("isLoggedIn", "false");
+      updateNavbar();
+      window.location.href = "index.html";
+    });
+  }
+
+  });
+
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const closeSidebar = document.getElementById("closeSidebar");
+    const userName = document.getElementById("userName");
+    const userLastName = document.getElementById("userLastName");
+    const userEmail = document.getElementById("userEmail");
+    const userActive = document.getElementById("userActive");
+
+    
+
+    function updateSidebarWithUserInfo() {
+      const userInfoString = localStorage.getItem("userInfo");
+      if (userInfoString) {
+        const userInfo = JSON.parse(userInfoString);
+        userName.value = userInfo.nombre;
+        userLastName.value = userInfo.apellido;
+        userEmail.value = userInfo.correo;
+        userActive.value = userInfo.activo == 1 ? "Activo" : "Inactivo";
+      }
+    }
+
+    function openSidebar() {
+      sidebar.style.width = "350px";
+      updateSidebarWithUserInfo();
+    }
+  
+    function closeSidebarFunc() {
+      sidebar.style.width = "0";
+    }
+  
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener("click", openSidebar);
+    }
+  
+    if (closeSidebar) {
+      closeSidebar.addEventListener("click", closeSidebarFunc);
+    }
+  
+    updateSidebarWithUserInfo();
+  });
+
   

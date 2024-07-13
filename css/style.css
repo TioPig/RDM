@@ -28,6 +28,7 @@
 }
 
 /* textos */
+
 .tx-naranjo {
     color: #F75442;
 }
@@ -228,7 +229,7 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     background-color: #F75442;
 }
 
@@ -447,3 +448,46 @@
     z-index: 0 !important;
     position: relative;
 }
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: #F9E9AE;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 0;
+  }
+  
+  .sidebar-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-content {
+    padding: 20px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar .closebtn {
+    color: white;
+    font-size: 30px;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }

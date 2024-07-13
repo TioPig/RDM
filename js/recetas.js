@@ -1,5 +1,5 @@
 
-    /** Recetas */
+    /** Recetas 
     -  POST https://apirecetas.iacst.space/recetas/  {
         "nombre": "Chocolate Peruano",
         "url_imagen": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg",
@@ -17,3 +17,4 @@
         "id_pais": 1,
         "estado": 1
             }
+        */

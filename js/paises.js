@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         const recetaElement = document.createElement("div");
                         recetaElement.classList.add("col-md-3");
                         recetaElement.innerHTML = `
-                            <div class="card mb-4">
+                            <div class="card mb-4 z-index-b">
                                 <img src="${receta.url_imagen}" class="card-img-top img-thumbnail receta-img" alt="${receta.nombre}">
                                 <div class="card-body">
                                     <h5 class="card-title titulo-card">${receta.nombre}</h5>

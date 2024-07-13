@@ -1,11 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
   const loginBtn = document.getElementById("loginBtn");
   const registerBtn = document.getElementById("registerBtn");
-
   if (loginBtn) {
     loginBtn.addEventListener("click", async function () {
       const email = document.getElementById("username").value;
       const password = document.getElementById("password").value;
+      const errorAcceso = document.getElementById("errorAcceso");
+      errorAcceso.classList.add("visually-hidden");
+
+
+      let errorMessage = "";
+      if (!email) errorMessage += "Por favor, ingrese su correo electrónico.<br>";
+      if (!password) {
+        errorMessage += "Por favor, ingrese una contraseña.<br>";
+      } else if (password.length < 8 || password.length > 16) {
+        errorMessage += "Contraseña Incorrecta.<br>";
+      }
+
+      if (errorMessage) {
+        errorAcceso.innerHTML = errorMessage;
+        errorAcceso.classList.remove("visually-hidden");
+        return;
+      }
+
+
 
       try {
         const response = await fetch("https://apirecetas.iacst.space/auth/login/", {
@@ -22,16 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
         if (data.token) {
           localStorage.setItem("token", data.token);
-          alert("Login successful!");
-          console.log(data)
-          /** window.location.href = "index.html"; */
+          localStorage.setItem("isLoggedIn", "true");
+          updateNavbar();
+          alert("Acceso concedido!");
+          window.location.href = "index.html";
         } else {
-          console.log(data)
-          alert("Login failed!");
+          if(data.msj === "usuario no existe en la base de datos"){
+            errorAcceso.innerHTML = "Usuario no existe";
+            errorAcceso.classList.remove("visually-hidden");
+          }
+          alert("Acceso denegado!");
         }
       } catch (error) {
         console.error("Error logging in:", error);
-        alert("An error occurred while logging in.");
+        alert("Ah ha ocurrido un error al acceder.");
       }
     });
   }
@@ -43,9 +65,37 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = document.getElementById("username").value;
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
+      const errorAcceso = document.getElementById("errorAcceso");
+      errorAcceso.classList.add("visually-hidden");
+
+      // Input validation
+      let errorMessage = "";
+      if (!firstName) errorMessage += "Por favor, ingrese su nombre.<br>";
+      if (!lastName) errorMessage += "Por favor, ingrese su apellido.<br>";
+      if (!email) errorMessage += "Por favor, ingrese su correo electrónico.<br>";
+      if (!password) {
+        errorMessage += "Por favor, ingrese una contraseña.<br>";
+      } else if (password.length < 8 || password.length > 16) {
+        errorMessage += "La contraseña debe tener entre 8 y 16 caracteres.<br>";
+      }
+      if (!confirmPassword) errorMessage += "Por favor, confirme su contraseña.<br>";
+  
+      if (errorMessage) {
+        errorAcceso.innerHTML = errorMessage;
+        errorAcceso.classList.remove("visually-hidden");
+        return;
+      }
+
+
+    if (errorMessage) {
+      errorAcceso.innerHTML = errorMessage;
+      errorAcceso.classList.remove("visually-hidden");
+      return;
+    }
 
       if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+        errorAcceso.innerHTML = 'Las contraseñas no coinciden';
+        errorAcceso.classList.remove("visually-hidden");
         return;
       }
 
@@ -66,14 +116,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const data = await response.json();
         if (data.ok) {
-          alert("Registration successful!");
-          window.location.href = "login.html";
+          alert("Registro Completado!");
+          
+          /** window.location.href = "login.html"; */
         } else {
-          alert("Registration failed!");
+          if (data.msj === "Error al agregar usuario.") {
+            errorAcceso.innerHTML = '<p>Ya existe un usuario con ese correo</p>';
+            errorAcceso.classList.remove("visually-hidden");
+            return;
+          }
         }
       } catch (error) {
+        const data = await response.json();
+        console.log(data)
         console.error("Error registering:", error);
-        alert("An error occurred while registering.");
+        alert("Ah ocurrido un error al registrarse.");
       }
     });
   }
