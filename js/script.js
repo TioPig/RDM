@@ -299,10 +299,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+ 
   document.addEventListener("DOMContentLoaded", function () {
-    
-    
-
     window.updateNavbar = function() {
       const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
       const loginLink = document.getElementById("loginLink");
@@ -349,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-  
+  if (!window.location.pathname.includes('login.html') && !window.location.pathname.includes('register.html')){
   document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
     const sidebarToggle = document.getElementById("sidebarToggle");
@@ -392,4 +390,4 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSidebarWithUserInfo();
   });
 
-  
+}
