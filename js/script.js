@@ -96,8 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Cargar Paises en el Index */
 document.addEventListener("DOMContentLoaded", function () {
-  const paths = ["https://recetasdelmundo.uno/index.html", "https://recetasdelmundo.uno/"];
-    if (paths.includes(window.location.href)) {
+  if (window.location.pathname.includes('index.html')) {
     const paisesUrl = "https://apirecetas.iacst.space/pais/";
     const paisesDiv = document.getElementById("pais");
     async function cargarPaises() {
@@ -222,8 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Receta del dia
 document.addEventListener("DOMContentLoaded", function () {
-    const paths = ["https://recetasdelmundo.uno/index.html", "https://recetasdelmundo.uno/login.html", "https://recetasdelmundo.uno/register.html", "https://recetasdelmundo.uno/"];
-    if (paths.includes(window.location.href)) {
+  if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('index.html')) {
       const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
       const recetaRandomLink = document.getElementById("recetaRandomLink");
       const recetaDelDiaNombre = document.getElementById("recetaDelDiaNombre");
@@ -363,15 +361,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const userInfoString = localStorage.getItem("userInfo");
       if (userInfoString) {
         const userInfo = JSON.parse(userInfoString);
-        userName.value = userInfo.nombre;
-        userLastName.value = userInfo.apellido;
-        userEmail.value = userInfo.correo;
-        userActive.value = userInfo.activo == 1 ? "Activo" : "Inactivo";
+        if (userName) userName.textContent = userInfo.nombre;
+        if (userLastName) userLastName.textContent = userInfo.apellido;
+        if (userEmail) userEmail.textContent = userInfo.correo;
+        if (userActive) {
+          userActive.textContent = userInfo.activo == 1 ? "Activo" : "Inactivo";
+          userActive.className = userInfo.activo == 1 ? "badge bg-success" : "badge bg-secondary";
+        }
       }
     }
 
     function openSidebar() {
-      sidebar.style.width = "350px";
+      sidebar.style.width = "400px";
       updateSidebarWithUserInfo();
     }
   
