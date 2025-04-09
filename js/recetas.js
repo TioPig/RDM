@@ -1,6 +1,6 @@
 
     /** Recetas 
-    -  POST https://apirecetas.iacst.space/recetas/  {
+    -  POST https://api.recetasdelmundo.uno/recetas/  {
         "nombre": "Chocolate Peruano",
         "url_imagen": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg",
         "ingrediente": " 3 tbs Heavy Cream - Miniature Marshmallows",
@@ -8,7 +8,7 @@
         "id_cat": 4,
         "id_pais": 1,
         "estado": 1
-    } -  PUT - https://apirecetas.iacst.space/recetas/48  {
+    } -  PUT - https://api.recetasdelmundo.uno/recetas/48  {
         "nombre": "Chocolate Peruano Argentino",
         "url_imagen": "https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg",
         "ingrediente": " 3 tbs Heavy Cream - Miniature Marshmallows",

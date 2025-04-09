@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const paisesUrl = "https://apirecetas.iacst.space/pais/";
-    const recetasUrlBase = "https://apirecetas.iacst.space/recetas/pais/";
+    const paisesUrl = "https://api.recetasdelmundo.uno/pais/";
+    const recetasUrlBase = "https://api.recetasdelmundo.uno/recetas/pais/";
     const paisesDiv = document.getElementById("paises");
     const recetasDiv = document.getElementById("recetas");
     const nombrePais = document.getElementById("nombrePais"); // Seleccionar el elemento del título

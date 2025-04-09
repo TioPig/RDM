@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const categoriasUrl = "https://apirecetas.iacst.space/categoria/";
-    const recetasUrlBase = "https://apirecetas.iacst.space/recetas/";
+    const categoriasUrl = "https://api.recetasdelmundo.uno/categoria/";
+    const recetasUrlBase = "https://api.recetasdelmundo.uno/recetas/";
     const categoriasDiv = document.getElementById("categorias");
     const recetasDiv = document.getElementById("recetas");
     const nombreCategoria = document.getElementById("nombreCategoria"); // Seleccionar el elemento del título

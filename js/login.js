@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
       try {
-        const response = await fetch("https://apirecetas.iacst.space/auth/login/", {
+        // const response = await fetch("https://api.recetasdelmundo.uno/auth/login", {
+        const response = await fetch("http://localhost:3000/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
-        const response = await fetch("https://apirecetas.iacst.space/usuario/", {
+        const response = await fetch("https://api.recetasdelmundo.uno/usuario/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -140,13 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /** Cuentas 
-- POST  https://apirecetas.iacst.space/usuario/  {
+- POST  https://api.recetasdelmundo.uno/usuario/  {
     "nombre" : "Claudio",
     "apellido" : "Sanz",
     "correo" : "csanz@duocuc.cl",
     "password" : "cast1301",
     "activo" : 1
-}   -  GET https://apirecetas.iacst.space/usuario/correo/psalas@duocuc.cl - POST  https://apirecetas.iacst.space/usuario/password/ {
+}   -  GET https://api.recetasdelmundo.uno/usuario/correo/psalas@duocuc.cl - POST  https://api.recetasdelmundo.uno/usuario/password/ {
     "correo" : "csanz@duocuc.cl",
     "password" : "cast1301"
 } -

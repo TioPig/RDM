@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*-- Cargar Paises en NavDropdown --*/
 document.addEventListener("DOMContentLoaded", function () {
-  const paisesUrl = "https://apirecetas.iacst.space/pais/";
+  const paisesUrl = "https://api.recetasdelmundo.uno/pais/";
   const dropdownMenuId = "navbarDropdownPaisesMenu";
   const dropdownToggleId = "navbarDropdownPaises";
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*-- Cargar Categorias en NavDropdown --*/
 document.addEventListener("DOMContentLoaded", function () {
-  const categoriasUrl = "https://apirecetas.iacst.space/categoria/";
+  const categoriasUrl = "https://api.recetasdelmundo.uno/categoria/";
   const dropdownMenuId = "navbarDropdownCategoriasMenu";
   const dropdownToggleId = "navbarDropdownCategorias";
 
@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Cargar Paises en el Index */
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes('index.html')) {
-    const paisesUrl = "https://apirecetas.iacst.space/pais/";
+  if (window.location.pathname.includes('index.html') || (window.location.pathname === '/')) {
+    const paisesUrl = "https://api.recetasdelmundo.uno/pais/";
     const paisesDiv = document.getElementById("pais");
     async function cargarPaises() {
       await fetch(paisesUrl)
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Receta Aleatoria
 document.addEventListener("DOMContentLoaded", function () {
-  const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
+  const recetasUrl = "https://api.recetasdelmundo.uno/recetas"; // Endpoint para obtener todas las recetas
   const recetaRandomLink = document.getElementById("recetaRandomLink");
   const recetaAleatoriaModal = new bootstrap.Modal(
     document.getElementById("recetaAleatoriaModal")
@@ -221,8 +221,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Receta del dia
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('index.html')) {
-      const recetasUrl = "https://apirecetas.iacst.space/recetas"; // Endpoint para obtener todas las recetas
+  if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+      const recetasUrl = "https://api.recetasdelmundo.uno/recetas"; // Endpoint para obtener todas las recetas
       const recetaRandomLink = document.getElementById("recetaRandomLink");
       const recetaDelDiaNombre = document.getElementById("recetaDelDiaNombre");
       const recetaDelDiaDescripcion = document.getElementById("recetaDelDiaDescripcion");
